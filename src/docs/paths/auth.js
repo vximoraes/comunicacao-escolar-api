@@ -504,6 +504,98 @@ const authPaths = {
       },
     },
   },
+
+  '/redefinir-senha': {
+    post: {
+      tags: ['Auth'],
+      summary: 'Redefinir senha via token',
+      description: `
+            + **Caso de uso**: Redefinir a senha usando o link recebido por e-mail.
+            
+            + **Função de Negócio**:
+                - Validar o token JWT de recuperação.
+                - Atualizar a senha do usuário.
+                - Invalidar o token após o uso.
+
+            + **Regras de Negócio**:
+                - Token deve ser enviado via query parameter (?token=...).
+                - Token deve ser válido e não expirado.
+                - Nova senha deve seguir as políticas de segurança.
+
+            + **Resultado Esperado**:
+                - HTTP 200 OK com mensagem de sucesso.
+            `,
+      parameters: [
+        {
+          name: 'token',
+          in: 'query',
+          required: true,
+          description: 'Token JWT recebido por e-mail',
+          schema: {
+            type: 'string',
+          },
+        },
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/ResetPasswordTokenRequest',
+            },
+          },
+        },
+      },
+      responses: {
+        200: {
+          description: 'Senha atualizada com sucesso',
+        },
+        400: commonResponses[400](),
+        401: commonResponses[401](),
+        500: commonResponses[500](),
+      },
+    },
+  },
+
+  '/redefinir-senha-codigo': {
+    post: {
+      tags: ['Auth'],
+      summary: 'Redefinir senha via código',
+      description: `
+            + **Caso de uso**: Redefinir a senha digitando o código de 6 dígitos recebido por e-mail.
+            
+            + **Função de Negócio**:
+                - Validar o código alfanumérico.
+                - Atualizar a senha do usuário.
+                - Limpar o código após o uso.
+
+            + **Regras de Negócio**:
+                - Código deve ser válido e não expirado (15 min).
+                - Nova senha deve seguir as políticas de segurança.
+
+            + **Resultado Esperado**:
+                - HTTP 200 OK com mensagem de sucesso.
+            `,
+      requestBody: {
+        required: true,
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/ResetPasswordCodeRequest',
+            },
+          },
+        },
+      },
+      responses: {
+        200: {
+          description: 'Senha atualizada com sucesso',
+        },
+        400: commonResponses[400](),
+        404: commonResponses[404](),
+        500: commonResponses[500](),
+      },
+    },
+  },
 };
 
 export default authPaths;

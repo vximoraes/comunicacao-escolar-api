@@ -241,7 +241,7 @@ class AuthService {
     // ───────────────────────────────────────────────
     // Passo 5 – Persistir token + código no usuário
     // ───────────────────────────────────────────────
-    const expMs = Date.now() + 60 * 60 * 1000; // 1 hora de expiração
+    const expMs = Date.now() + 15 * 60 * 1000; // 15 minutos de expiração
     const data = await this.repository.update(userEncontrado._id, {
       unique_token: tokenUnico,
       password_recovery_code: codigoRecuperaSenha,

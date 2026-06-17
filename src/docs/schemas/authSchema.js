@@ -289,6 +289,39 @@ const authSchemas = {
     description: 'Schema para resposta de recuperação de senha',
   },
 
+  ResetPasswordTokenRequest: {
+    type: 'object',
+    properties: {
+      password: {
+        type: 'string',
+        description: 'Nova senha do usuário',
+        minLength: 8,
+        example: 'NovaSenha@456',
+      },
+    },
+    required: ['password'],
+    description: 'Schema para redefinição de senha via token',
+  },
+
+  ResetPasswordCodeRequest: {
+    type: 'object',
+    properties: {
+      password_recovery_code: {
+        type: 'string',
+        description: 'Código de 6 dígitos enviado por e-mail',
+        example: 'A1B2C3',
+      },
+      password: {
+        type: 'string',
+        description: 'Nova senha do usuário',
+        minLength: 8,
+        example: 'NovaSenha@456',
+      },
+    },
+    required: ['password_recovery_code', 'password'],
+    description: 'Schema para redefinição de senha via código',
+  },
+
   // Schemas de erro específicos para autenticação
   AuthError: {
     type: 'object',

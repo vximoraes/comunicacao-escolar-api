@@ -16,6 +16,10 @@ router
     '/redefinir-senha',
     asyncWrapper(authController.updatePasswordByToken.bind(authController)),
   )
+  .post(
+    '/redefinir-senha-codigo',
+    asyncWrapper(authController.updatePasswordByCode.bind(authController)),
+  )
   .post('/logout', asyncWrapper(authController.logout.bind(authController)))
   .post('/revoke', asyncWrapper(authController.revoke.bind(authController)))
   .post('/refresh', asyncWrapper(authController.refresh.bind(authController)))

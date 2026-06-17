@@ -109,6 +109,23 @@ export default async function userSeed() {
     ],
   };
 
+  // Create Silvio Parent
+  const silvioParent = {
+    full_name: 'Silvio Huan',
+    email: 'silviohuan@gmail.com',
+    password: defaultPassword,
+    active: true,
+    permissions: userGroup?.permissions || [],
+    groups: userGroup ? [userGroup._id] : [],
+    memberships: [
+      {
+        school_id: school._id,
+        role: 'parent',
+        associated_students: studentIds.slice(0, 2),
+      },
+    ],
+  };
+
   // Create teachers
   const teachers = [];
   for (let i = 0; i < 3; i++) {
@@ -159,6 +176,7 @@ export default async function userSeed() {
     admin,
     defaultTeacher,
     defaultParent,
+    silvioParent,
     ...teachers,
     ...parents,
   ];
@@ -173,6 +191,9 @@ export default async function userSeed() {
   const createdDefaultParent = await User.findOne({
     email: process.env.PARENT_EMAIL || 'ana.parent@escola.com',
   });
+  const createdSilvioParent = await User.findOne({
+    email: 'silviohuan@gmail.com',
+  });
 
   console.log(`School created: ${school.name} (${school._id})`);
   console.log(`Admin: ${createdAdmin.email}`);
@@ -181,6 +202,9 @@ export default async function userSeed() {
   );
   console.log(
     `Default parent: ${createdDefaultParent.email} (${createdDefaultParent._id})`,
+  );
+  console.log(
+    `Silvio parent: ${createdSilvioParent.email} (${createdSilvioParent._id})`,
   );
   console.log(`${teachers.length} fake teachers created`);
   console.log(`${parents.length} fake parents created`);

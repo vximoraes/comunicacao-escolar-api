@@ -94,7 +94,7 @@ Equipe Comunicação Escolar
                 <a href="${activationUrl}" style="display: inline-block; padding: 14px 32px; background-color: #306FCC; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;">Ativar minha conta</a>
             </div>
             <div style="margin-top: 25px; border-radius: 4px;">
-                <p style="margin: 0; font-size: 18px;"><strong>Importante:</strong> Este link expira em 5 minutos por segurança.</p>
+                <p style="margin: 0; font-size: 18px;"><strong>Importante:</strong> Este link expira em 15 minutos por segurança.</p>
             </div>
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666;">
                 <p style="margin: 0 0 8px 0; font-size: 16px;">Não solicitou este cadastro? Ignore este e-mail.</p>
@@ -123,7 +123,7 @@ Você solicitou a recuperação de senha da sua conta no Comunicação Escolar.
 Clique no link abaixo para redefinir sua senha:
 ${resetUrl}
 
-Este link é válido por 5 minutos.
+Este link é válido por 15 minutos.
 
 Se você não solicitou esta recuperação, ignore este e-mail.
 
@@ -143,7 +143,7 @@ Equipe Comunicação Escolar
                 <a href="${resetUrl}" style="display: inline-block; padding: 14px 32px; background-color: #306FCC; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;">Redefinir minha senha</a>
             </div>
             <div style="margin-top: 25px; border-radius: 4px;">
-                <p style="margin: 0; font-size: 18px;"><strong>Importante:</strong> Este link expira em 5 minutos por segurança.</p>
+                <p style="margin: 0; font-size: 18px;"><strong>Importante:</strong> Este link expira em 15 minutos por segurança.</p>
             </div>
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666;">
                 <p style="margin: 0 0 8px 0; font-size: 16px;">Não solicitou esta recuperação? Ignore este e-mail.</p>
